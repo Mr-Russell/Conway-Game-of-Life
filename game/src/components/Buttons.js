@@ -43,7 +43,7 @@ function Buttons(props){
       </button>
 
       <select onChange = {handleSelect}>
-        <option defaultValue="25x25">25 x 25</option>
+        <option value="25x25">25 x 25</option>
         <option value="50x50">50 x 50</option>
         <option value="75x75">75 x 75</option>
         <option value="75x100">75 x 100</option>
