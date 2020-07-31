@@ -14,8 +14,8 @@ const create2DArray = (columns, rows) =>{
 function App() {
   ///////////////////// STATE ////////////////////////////
 
-  const [rows, setRows] = useState(25)
-  const [columns, setColumns] = useState(25)
+  const [rows, setRows] = useState(30)
+  const [columns, setColumns] = useState(30)
   // const [grid, setGrid] = useState(Array(columns).fill(Array(rows).fill(false)))
   // const [grid, setGrid] = useState(create2DArray(columns, rows))
   const [grid, setGrid] = useState(Array(rows).fill().map(()=>(Array(columns).fill(false))))
@@ -206,28 +206,45 @@ function App() {
   return (
     <div className="App">
       <h1>John Conway's Game of Life</h1>
-      <div className="gameContainer">
-        <Buttons 
-          playButton = {playButton}
-          slow = {slow}
-          fast = {fast}
-          clear = {clear}
-          random = {random}
-          gridSize = {gridSize}
-          running = {running}
-          oneGen = {oneGen}
-        />
-        {/* <h4>Speed: {speedRef.current===1200 ? "Slow" : "Fast"}</h4> */}
-        <h4><u>Speed</u>: {speed === 1000 ? "Slow" : "Fast"}</h4>
-        <Grid 
-          grid = {gridRef.current}
-          rows = {rows}
-          columns = {columns}
-          selectBox = {selectBox}
-        />
-        <h2>Generations: {genRef.current}</h2>
-      </div>
-    </div>
+      <div className="outerContainer">
+        <div className="gameContainer">
+          <Buttons 
+            playButton = {playButton}
+            slow = {slow}
+            fast = {fast}
+            clear = {clear}
+            random = {random}
+            gridSize = {gridSize}
+            running = {running}
+            oneGen = {oneGen}
+          />
+          {/* <h4>Speed: {speedRef.current===1200 ? "Slow" : "Fast"}</h4> */}
+          <h4><u>Speed</u>: {speed === 1000 ? "Slow" : "Fast"}</h4>
+          <Grid 
+            grid = {gridRef.current}
+            rows = {rows}
+            columns = {columns}
+            selectBox = {selectBox}
+          />
+          <h2>Generations: {genRef.current}</h2>
+        {/* closes gameContainer */}
+        </div>
+
+        <div className="rules">
+          <h3><u>The Rules of the Game:</u></h3>
+          <ol>
+            <li>Any living cell with fewer than two live neighbors dies, as if by under-population.</li>
+            <li>Any living cell with more than three living neighbors dies, as if by overpopulation.</li>
+            <li>Any living cell with two or three living neighbors lives on to the next generation.</li>
+            <li>Any dead cell with exactly three living neighbors comes alive, as if by reproduction.</li>
+          </ol>
+        {/* closes rules */}
+        </div>
+        
+      {/* closes outerContainer */}
+      </div> 
+    {/* closes App */}
+    </div> 
   );
 }
 
