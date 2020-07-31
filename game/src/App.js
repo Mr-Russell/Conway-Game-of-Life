@@ -14,8 +14,14 @@ const create2DArray = (columns, rows) =>{
 function App() {
   ///////////////////// STATE ////////////////////////////
 
-  const [rows, setRows] = useState(30)
-  const [columns, setColumns] = useState(30)
+  const [rows, setRows] = useState(25)
+  const rowsRef = useRef(rows)
+  rowsRef.current = rows
+
+  const [columns, setColumns] = useState(25)
+  const columnsRef = useRef(columns)
+  columnsRef.current = columns
+
   // const [grid, setGrid] = useState(Array(columns).fill(Array(rows).fill(false)))
   // const [grid, setGrid] = useState(create2DArray(columns, rows))
   const [grid, setGrid] = useState(Array(rows).fill().map(()=>(Array(columns).fill(false))))
@@ -123,30 +129,43 @@ function App() {
     console.log(size)
 
     if (size === "25x25"){
-      setRows(25)
-      setColumns(25)
+      rowsRef.current = 25
+      setRows(rowsRef.current)
+
+      columnsRef.current = 25
+      setColumns(columnsRef.current)
 
     } else if (size === "50x50"){
-      setRows(50)
-      console.log("After Setting rows to '50'",rows)
-      setColumns(50)
+      rowsRef.current = 50
+      setRows(rowsRef.current)
+      
+      columnsRef.current = 50
+      setColumns(columnsRef.current)
+
       // debugger
-      setGrid(create2DArray(columns, rows))
+      console.log("After Setting rows to '50'",rows)
       
     } else if (size === "75x75"){
-      setRows(75)
-      setColumns(75)
+      rowsRef.current = 75
+      setRows(rowsRef.current)
+      
+      columnsRef.current = 75
+      setColumns(columnsRef.current)
 
     } else if (size === "75x100"){
-      setRows(100)
-      setColumns(75)
+      rowsRef.current = 75
+      setRows(rowsRef.current)
+      
+      columnsRef.current = 100
+      setColumns(columnsRef.current)
     }
 
     console.log(rows)
     console.log(columns)
     console.log(grid)
-    // const newGrid = Array(columns).fill(Array(rows).fill(false))
-    // setGrid(newGrid)
+    
+    gridRef.current = create2DArray(rowsRef.current, columnsRef.current)
+    setGrid(gridRef.current)
   }
 
 
@@ -208,7 +227,7 @@ function App() {
       <h1>John Conway's Game of Life</h1>
       <div className="outerContainer">
         <div className="gameContainer">
-          <Buttons 
+          {/* <Buttons 
             playButton = {playButton}
             slow = {slow}
             fast = {fast}
@@ -217,7 +236,7 @@ function App() {
             gridSize = {gridSize}
             running = {running}
             oneGen = {oneGen}
-          />
+          /> */}
           {/* <h4>Speed: {speedRef.current===1200 ? "Slow" : "Fast"}</h4> */}
           <h4><u>Speed</u>: {speed === 1000 ? "Slow" : "Fast"}</h4>
           <Grid 
@@ -229,7 +248,16 @@ function App() {
           <h2>Generations: {genRef.current}</h2>
         {/* closes gameContainer */}
         </div>
-
+        <Buttons 
+            playButton = {playButton}
+            slow = {slow}
+            fast = {fast}
+            clear = {clear}
+            random = {random}
+            gridSize = {gridSize}
+            running = {running}
+            oneGen = {oneGen}
+          />
         <div className="rules">
           <h3><u>The Rules of the Game:</u></h3>
           <ol>

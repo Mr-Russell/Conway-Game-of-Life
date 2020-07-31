@@ -21,8 +21,8 @@ body {
 .box {
   /* display: inline-block;        */
   border: 1px solid black;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   /* margin-left: -1px;
   margin-bottom: -1px; */
   }
@@ -56,15 +56,18 @@ body {
 }
 
 .btnContainer{
-  width: 60%;
+  width: 10%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: ;
   margin: 40px auto;
 }
 
 button{
   border-radius: 5px;
   font-size: .9rem;
+  margin: 10% 0;
 }
 
 .grid {
@@ -79,7 +82,8 @@ button{
 
 .outerContainer{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   margin: 3% 1%;
 }
 

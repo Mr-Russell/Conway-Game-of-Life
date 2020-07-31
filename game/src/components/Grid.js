@@ -27,7 +27,7 @@ function Grid(props) {
   return(
     <div 
       className="grid" 
-      style={{gridTemplateColumns: `repeat(${props.columns}, 20px)`}}
+      style={{gridTemplateColumns: `repeat(${props.columns}, 12px)`}}
     >
       {rowsArray}
     </div>

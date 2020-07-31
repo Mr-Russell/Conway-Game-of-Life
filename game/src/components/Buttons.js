@@ -2,10 +2,10 @@ import React from 'react'
 
 function Buttons(props){
 
-  // const handleSelect = (e) =>{
-  //   // e.preventDefault()
-  //   props.gridSize(e.target.value)
-  // }
+  const handleSelect = (e) =>{
+    // e.preventDefault()
+    props.gridSize(e.target.value)
+  }
 
   return(
     <div className="btnContainer">
@@ -42,12 +42,12 @@ function Buttons(props){
         Random
       </button>
 
-      {/* <select onChange = {handleSelect}>
+      <select onChange = {handleSelect}>
         <option defaultValue="25x25">25 x 25</option>
         <option value="50x50">50 x 50</option>
         <option value="75x75">75 x 75</option>
         <option value="75x100">75 x 100</option>
-      </select> */}
+      </select>
     </div> 
   )
 }
